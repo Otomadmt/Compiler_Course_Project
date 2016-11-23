@@ -1,0 +1,5 @@
+###Considering...
+- Question on the regular expression matching the remarks:
+    - Can the regular expression` [\/][\*]([^\*])*[\*]([^\*\/](([^\*])*)[\*]|[\*])*(\/)` be replaced by
+      `[\/][\*]([^\*])*([^\*\/](([^\*])*)[\*]|[\*])+(\/)`, which merged the `[\*] ` into the later section and change the `*` of the later to `+` ?
+- Method to capture dismatched characters.

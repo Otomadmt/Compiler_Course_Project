@@ -2,13 +2,12 @@
 Function:   Read a in-fix expression as input,
             then transform it into a post-fix
             expression.
-Author:     22920142203831 / Xiamen Univ 2016.
 Input:      Legal in-fix expression containing
             constants, variables, '+', '-', '*',
             '/' and parenthesis. Variables start
             with a letter and contain only
             letters and digits.
-            E.g. 5 + ((31 * t1) - 5) / (6 - 1)
+            E.g. 15 + ((31 * t1) - 5) / (6 - 1)
 Output:     Corresponding post-fix expression
             containing constants, variables,
             '+', '-', '*' and '/'.
@@ -44,12 +43,12 @@ Translation Scheme with Left-recursive Eliminated:
 #define _TKN_NUM 500
 #define _TKN_ID  600
 
-int lookAhead, tokenVal;
+int lookAhead = '\n', tokenVal;
 char lexeme[1024];
 
 int GetToken()
 {
-    int now, i;
+    int i, now;
     while(1){
         now = getchar();
         if((now == ' ') || (now == '\t') ) {
@@ -84,10 +83,10 @@ int GetToken()
 
 void Match(int now)
 {
-    if(lookAhead = now){
+    if(lookAhead == now){
         lookAhead = GetToken();
     }else{
-        printf("Expression illegal.(LookAhead: %c)\n",lookAhead);
+        printf("Match failed.(LookAhead: %c)\n",lookAhead);
         exit(1); //Illegal input
     }
 }
@@ -105,7 +104,7 @@ void Factor()
         Match('('); Expr(); Match(')');
     }
     else{
-        printf("Match Error.(LookAhead: %c)\n", lookAhead);
+        printf("Factor Error.(LookAhead: %c)\n", lookAhead);
         exit(1); //Illegal input
     }
 }
@@ -161,7 +160,7 @@ int main(int argc, char *argv[])
 
         if(lookAhead != '\n')
         {
-            printf("illegal input.(lookAhead: %c)\n", lookAhead);
+            printf("Illegal input.(lookAhead: %c)\n", lookAhead);
             exit(1); //Illegal input
         }
 

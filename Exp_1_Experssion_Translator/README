@@ -1,7 +1,6 @@
 Function:   Read a in-fix expression as input,
             then transform it into a post-fix
             expression.
-Author:     22920142203831 / Xiamen Univ 2016.
 Input:      Legal in-fix expression containing
             constants, variables, '+', '-', '*',
             '/' and parenthesis. Variables start
